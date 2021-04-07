@@ -1,13 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {
+  Container,
+  IconButton,
+  Table,
+  TableCell,
+  TableHead,
+  TableBody,
+  TableRow,
+} from '@material-ui/core';
+import { PlayArrow, Stop, Delete } from '@material-ui/icons';
+import { ITask } from '../../data/ITask';
 
-const DashboardView: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
+interface DashboardViewProps {
+  tableHeader: string[];
+  data: ITask[];
+}
+
+const DashboardView: React.FC<DashboardViewProps> = (props: DashboardViewProps) => {
+  const { tableHeader, data } = props;
 
   return (
-    <>
-      <div>{count}</div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-    </>
+    <Container>
+      <Table>
+        <TableHead>
+          <TableRow>
+            {tableHeader.map((text, idx) => (
+              <TableCell key={idx}>{text}</TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((task, idx) => (
+            <TableRow key={idx}>
+              <TableCell>{task.id}</TableCell>
+              <TableCell>{task.taskName}</TableCell>
+              <TableCell>{task.time}</TableCell>
+              <TableCell>
+                {task.active 
+                ? <IconButton>
+                    <Stop />
+                  </IconButton>
+                : <IconButton>
+                    <PlayArrow />
+                  </IconButton>}
+                <IconButton>
+                  <Delete />
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Container>
   );
 };
 
