@@ -1,13 +1,13 @@
 import React from 'react';
-import Dashboard from '../Dashboard';
+import AppView from './App-view';
 import TaskProvider from '../../modules/Tasks/Tasks';
 
-const App: React.FC = () => {
+const AppContainer: React.FC = () => {
   return (
     <TaskProvider>
-      <Dashboard />
+      <AppView />
     </TaskProvider>
   );
 };
 
-export default App;
+export default AppContainer;

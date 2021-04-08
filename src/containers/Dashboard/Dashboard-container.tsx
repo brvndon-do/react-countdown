@@ -3,7 +3,7 @@ import DashboardView from './Dashboard-view';
 import { useTasks } from '../../modules/Tasks/Tasks';
 import data from '../../data/en.json';
 
-const Dashboard: React.FC = () => {
+const DashboardContainer: React.FC = () => {
   const tasks = useTasks();
 
   return (
@@ -14,4 +14,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardContainer;
