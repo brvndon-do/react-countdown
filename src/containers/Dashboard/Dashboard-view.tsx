@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import { PlayArrow, Stop, Delete } from '@material-ui/icons';
 import { ITask } from '../../data/ITask';
+import { AddTask } from '../../components/AddTask';
 
 interface DashboardViewProps {
   tableHeader: string[];
@@ -21,6 +22,7 @@ const DashboardView: React.FC<DashboardViewProps> = (props: DashboardViewProps) 
 
   return (
     <Container>
+      <AddTask />
       <Table>
         <TableHead>
           <TableRow>
