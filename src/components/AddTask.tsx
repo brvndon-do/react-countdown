@@ -34,8 +34,8 @@ export const AddTask: React.FC = () => {
   };
 
   const handleAddTask = () => {
-
     const i: number = tasks.tasks.length;
+    
     tasks.addTask({
       id: i,
       taskName: taskName,

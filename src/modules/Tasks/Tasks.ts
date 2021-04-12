@@ -13,10 +13,22 @@ const Initialize = () => {
     setTasks(tasks.filter(t => t.id !== taskId));
   };
 
+  const toggleStatus = (taskId: number): void => {
+    tasks.map(t => {
+      if (t.id === taskId)
+        t.active = !t.active;
+        
+        return t;
+    });
+
+    setTasks([...tasks]);
+  };
+
   return {
     tasks,
     addTask,
-    deleteTask
+    deleteTask,
+    toggleStatus
   };
 };
 
