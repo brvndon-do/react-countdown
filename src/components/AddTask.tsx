@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import { useTasks } from '../modules/Tasks/Tasks';
 import {
-  Box,
-  Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
   TextField,
   Button,
-  makeStyles
 } from '@material-ui/core';
+import data from '../data/en.json';
 
-const useStyles = makeStyles({
-  root: {
-    height: '40px',
-  },
-  form: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-});
+interface AddTaskProps {
+  isOpen: boolean;
+  handleClose: () => void;
+}
 
-export const AddTask: React.FC = () => {
+export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
+  const { isOpen, handleClose } = props;
   const tasks = useTasks();
-  const classes = useStyles();
-  const [taskName, setTaskName] = useState<string>('');
-  const [time, setTime] = useState<number>(30);
+  const [taskName, setTaskName] = useState('');
+  const [time, setTime] = useState(30);
 
   const handleTextChange = (e: React.ChangeEvent<{ value: string }>) => {
     setTaskName(e.target.value);
@@ -44,13 +41,27 @@ export const AddTask: React.FC = () => {
     });
   };
 
+
   return (
-    <Paper elevation={2} className={classes.root}>
-      <Box className={classes.form} pl={3}>
-        <TextField onChange={handleTextChange} placeholder="Task name" />
-        <TextField onChange={handleTimeChange} placeholder="Time" />
-        <Button onClick={() => handleAddTask()}>Add</Button>
-      </Box>
-    </Paper>
+    <Dialog open={isOpen} onClose={handleClose}>
+      <DialogTitle>{data.DialogTitle}</DialogTitle>
+      <DialogContent>
+        <TextField onChange={handleTextChange}/>
+        <DialogContentText>{data.DialogText[0]}</DialogContentText>
+        <TextField
+          value={30}
+          onChange={handleTimeChange}
+        />
+        <DialogContentText>{data.DialogText[1]}</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleAddTask}>
+          {data.DialogActions[0]}
+        </Button>
+        <Button onClick={handleClose}>
+          {data.DialogActions[1]}
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };

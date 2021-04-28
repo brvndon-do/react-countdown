@@ -13,6 +13,10 @@ const Initialize = () => {
     setTasks(tasks.filter(t => t.id !== taskId));
   };
 
+  const clearTasks = (): void => {
+    setTasks([]);
+  };
+
   const toggleStatus = (taskId: number): void => {
     tasks.map(t => {
       if (t.id === taskId)
@@ -28,6 +32,7 @@ const Initialize = () => {
     tasks,
     addTask,
     deleteTask,
+    clearTasks,
     toggleStatus
   };
 };

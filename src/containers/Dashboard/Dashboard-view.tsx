@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { AddTask } from '../../components/AddTask';
+import { Header } from '../../components/Header';
 import { Listview } from '../../components/Listview';
 import { ITask } from '../../data/ITask';
 
@@ -14,7 +14,7 @@ const DashboardView: React.FC<DashboardViewProps> = (props: DashboardViewProps) 
 
   return (
     <Container>
-      <AddTask />
+      <Header />
       <Listview
         tableHeader={tableHeader}
         data={data} />

@@ -4,5 +4,14 @@
     "Name",
     "Time",
     "Actions"
+  ],
+  "DialogTitle": "Add a Task",
+  "DialogText": [
+    "Task Name",
+    "Initial Timer"
+  ],
+  "DialogActions": [
+    "Add",
+    "Close"
   ]
 }
