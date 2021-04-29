@@ -39,6 +39,8 @@ export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
       time: time,
       active: false
     });
+
+    handleClose();
   };
 
 

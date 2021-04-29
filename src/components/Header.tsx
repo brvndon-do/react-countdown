@@ -23,11 +23,11 @@ export const Header: React.FC = () => {
     <Box className={classes.root} display="flex">
       <IconButton onClick={handleOpen}>
         <Add />
-        {open && (<AddTask isOpen={open} handleClose={handleClose}/>)}
       </IconButton>
       <IconButton onClick={() => clearTasks()}>
         <Clear />
       </IconButton>
+      {open && (<AddTask isOpen={open} handleClose={handleClose}/>)}
     </Box>
   );
 };
