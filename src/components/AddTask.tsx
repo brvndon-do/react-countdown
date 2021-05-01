@@ -31,10 +31,8 @@ export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
   };
 
   const handleAddTask = () => {
-    const i: number = tasks.tasks.length;
-    
     tasks.addTask({
-      id: i,
+      id: tasks.lastId,
       taskName: taskName,
       time: time,
       active: false

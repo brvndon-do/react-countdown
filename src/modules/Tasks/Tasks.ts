@@ -4,9 +4,11 @@ import { ITask } from '../../data/ITask';
 
 const Initialize = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [lastId, setLastId] = useState<number>(0);
   
   const addTask = (task: ITask): void => {
     setTasks(t => [...t, task]);
+    setLastId(lastId + 1);
   };
 
   const deleteTask = (taskId: number): void => {
@@ -15,6 +17,7 @@ const Initialize = () => {
 
   const clearTasks = (): void => {
     setTasks([]);
+    setLastId(0);
   };
 
   const toggleStatus = (taskId: number): void => {
@@ -30,6 +33,7 @@ const Initialize = () => {
 
   return {
     tasks,
+    lastId,
     addTask,
     deleteTask,
     clearTasks,
