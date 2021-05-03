@@ -35,7 +35,8 @@ export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
       id: tasks.lastId,
       taskName: taskName,
       time: time,
-      active: false
+      active: false,
+      isCompleted: false
     });
 
     handleClose();
@@ -49,7 +50,7 @@ export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
         <TextField onChange={handleTextChange}/>
         <DialogContentText>{data.DialogText[0]}</DialogContentText>
         <TextField
-          value={30}
+          value={time}
           onChange={handleTimeChange}
         />
         <DialogContentText>{data.DialogText[1]}</DialogContentText>

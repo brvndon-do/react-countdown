@@ -25,7 +25,7 @@ const Initialize = () => {
       if (t.id === taskId)
         t.active = !t.active;
         
-        return t;
+      return t;
     });
 
     setTasks([...tasks]);
