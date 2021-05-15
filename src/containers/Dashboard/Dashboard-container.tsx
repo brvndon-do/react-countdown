@@ -3,11 +3,11 @@ import DashboardView from './Dashboard-view';
 import { useTasks } from '../../modules/Tasks/Tasks';
 
 const DashboardContainer: React.FC = () => {
-  const tasks = useTasks();
+  const { tasks } = useTasks();
 
   return (
     <DashboardView 
-      data={tasks.tasks}
+      data={tasks}
     />
   );
 };
