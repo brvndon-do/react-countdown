@@ -7,7 +7,7 @@ import { useTasks } from '../modules/Tasks/Tasks';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    float: 'right'
+    justifyContent: 'flex-end'
   }
 });
 
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box className={classes.root} display="flex">
+    <Box className={classes.root}>
       <IconButton onClick={handleOpen}>
         <Add />
       </IconButton>

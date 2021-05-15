@@ -9,7 +9,7 @@ import {
   TextField,
   Button,
 } from '@material-ui/core';
-import data from '../data/en.json';
+import en from '../data/en.json';
 
 interface AddTaskProps {
   isOpen: boolean;
@@ -45,22 +45,22 @@ export const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
-      <DialogTitle>{data.DialogTitle}</DialogTitle>
+      <DialogTitle>{en.DialogTitle}</DialogTitle>
       <DialogContent>
         <TextField onChange={handleTextChange}/>
-        <DialogContentText>{data.DialogText[0]}</DialogContentText>
+        <DialogContentText>{en.DialogText[0]}</DialogContentText>
         <TextField
           value={time}
           onChange={handleTimeChange}
         />
-        <DialogContentText>{data.DialogText[1]}</DialogContentText>
+        <DialogContentText>{en.DialogText[1]}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleAddTask}>
-          {data.DialogActions[0]}
+          {en.DialogActions[0]}
         </Button>
         <Button onClick={handleClose}>
-          {data.DialogActions[1]}
+          {en.DialogActions[1]}
         </Button>
       </DialogActions>
     </Dialog>
