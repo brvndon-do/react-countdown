@@ -5,8 +5,15 @@ import {
   IconButton,
   TableCell,
   TableRow,
+  makeStyles
 } from '@material-ui/core';
 import { PlayArrow, Stop, Delete } from '@material-ui/icons';
+
+const useStyles = makeStyles({
+  completed: {
+    backgroundColor: '#00ff44'
+  }
+});
 
 interface TaskProps {
   task: ITask;
@@ -16,6 +23,7 @@ export const Task: React.FC<TaskProps> = (props: TaskProps) => {
   const { task } = props;
   const { deleteTask, toggleStatus } = useTasks();
   const [counter, setCounter] = useState<number>(0);
+  const classes = useStyles();
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -23,12 +31,13 @@ export const Task: React.FC<TaskProps> = (props: TaskProps) => {
     if (task.time <= 0) {
       task.isCompleted = true;
       task.active = false;
+      setCounter(counter => counter + 1);
     }
 
     if (task.active && !task.isCompleted) {
       timer = setInterval(() => {
         task.time -= 1;
-        setCounter((counter) => counter + 1);
+        setCounter(counter => counter + 1);
       }, 1000);
     }
 
@@ -36,7 +45,7 @@ export const Task: React.FC<TaskProps> = (props: TaskProps) => {
   }, [task.active, counter]);
 
   return (
-    <TableRow>
+    <TableRow className={task.isCompleted ? classes.completed : ''}>
       <TableCell>{task.id + 1}</TableCell>
         <TableCell>{task.taskName}</TableCell>
         <TableCell>{task.time}</TableCell>
